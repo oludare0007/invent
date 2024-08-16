@@ -1,0 +1,73 @@
+{%extends 'user/user_layout1.html'%}
+
+{% block content%}
+
+<div class="card mb-4">
+    
+    <div class="card-header" style="color: brown;">Input  Sales </div>
+    <div class="card-header" style="color: blue;">Total  Sales for today:  &#8358; {{daily_sales_formatted}} </div><span></span>
+    <div class="card-body">
+        <form class="px-4 py-3" action="{{url_for('sales')}}" method="post" >
+            {% set m = get_flashed_messages(with_categories=True) %} 
+                {% if m: %}
+                {% for cat,msg in m %}
+                   {% if cat =="error" %}
+                    <div class="alert alert-danger">{{ msg }}</div>
+                   {% else %}
+                   <div class="alert alert-info">{{ msg }}</div>
+                   {% endif %}
+                {% endfor %}
+                {% endif %}
+    <div class="row">
+        <div class="col-md-4">
+            
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">  
+                Product Name 
+                <select class="form-control" id="productname" name="productname" placeholder="Select Name">
+                    <option value="">Product Name</option>
+                    {% if allstock %}
+                    {% for ca in allstock%}
+                    
+                    <option value="{{ca.product_name}}">{{ca.product_name}}</option>
+                    {% else %}
+                    <p>No matching name found.</p>
+                    {% endfor %}
+                    {% endif %}
+                </select>
+                
+                
+        </div>
+        <div class="col-md-4">Category
+            <input class="form-control" id="category" type="text" placeholder="Category" name="category"  readonly/>
+            
+        </div>
+       
+        <div class="col-md-4">Total &#8358;
+            <input class="form-control" id="total" type="text" placeholder="Total" name="total" readonly/>
+        </div>
+    </div><br><br>
+            <div class="row">
+                <div class="col-md-4">
+                    Quantity
+                    <input class="form-control"  type="text" placeholder="Quantity" name="productqty" id="productqty" value="0"/>
+                </div>
+
+                <div class="col-md-4">Selling Price &#8358;
+                    <input class="form-control" id="sellingprice" type="text" placeholder="Selling Price" name="sellingprice" readonly/>
+                </div><br><br><br>
+
+                <div class="col-md-4">Comment
+                    <input class="form-control" id="comment" type="text" placeholder="comment" name="comment" />
+                </div>
+
+                
+
+               
+            </div><br>
+            <button class="btn btn-success col-12" href="index.html">Send</button>
+        </form>
+       
+    </div>
+
+</div>
+{%endblock%}

@@ -1,0 +1,62 @@
+{%extends 'user/user_layout1.html'%}
+
+{% block content %}  
+
+<div class="card mb-4">
+                        
+    <div class="card-body">
+        {% if allstock %}
+        <div class="datatable table-responsive">
+            <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th> S/N</th>
+                        <th>Product Name</th>
+                        <th>Product Quantity</th>
+                        <th>product Category</th>
+                        <th>Total Dispensed Qty</th>
+                        <th>Selling Price</th>
+                        <th>Store Name</th>
+                        <th>Date</th>
+                        <th>Comments</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th> S/N</th>
+                        <th>Product Name</th>
+                        <th>Product Quantity</th>
+                        <th>product Category</th>
+                        <th>Total Dispensed Qty</th>
+                        <th>Selling Price</th>
+                        <th>Store Name</th>
+                        <th>Date</th>
+                        <th>Comments</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    {% for stk in allstock %}     
+                  
+                    <tr>
+                        <th>{{ loop.index }}</th>
+                        <td>{{ stk.product_name }}</td> 
+                        <td>{{ stk.product_qty }}</td>
+                        <td>{{ stk.product_category }}</td>
+                        <td>{{ stk.total_qty }}</td>
+                        <td>{{ stk.selling_price }}</td>
+                        <td>{{ stk.store_name }}</td>
+                        <td>{{ stk.dispensed_datereg }}  </td>
+                        <td>{{ stk.comment }} </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <p>No stock data available.</p>
+        {% endif %}
+    </div>
+</div>
+
+
+{%endblock%}

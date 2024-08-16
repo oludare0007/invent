@@ -1,0 +1,50 @@
+{%extends 'user/user_layout1.html'%}
+
+{% block content %}  
+
+<div class="card mb-4">
+                        
+    <div class="card-body">
+        {% if all_daily_sale %}
+        <div class="datatable table-responsive">
+            <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr >
+                        <th> S/N</th>
+                        <th>Product Name</th>
+                        <th>Product Category</th>
+                        <th>Total Qty Sold</th>  
+                        <th>Total Amount</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr >
+                        <th> S/N</th>
+                        <th>Product Name</th>
+                        <th>Product Category</th>
+                        <th>Total Qty Sold</th>  
+                        <th>Total Amount</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    {% for stk in all_daily_sale %}     
+                  
+                    <tr style="color: rgb(10, 10, 37); text-align: center;">
+                        <th>{{ loop.index }}</th>
+                        <td>{{ stk.product_name }}</td>  
+                        <td>{{ stk.product_category }}</td>
+                        <td>{{ stk.product_qty }}</td>
+                        <td>{{ stk.total }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <p>No stock data available.</p>
+        {% endif %}
+    </div>
+</div>
+
+
+{%endblock%}

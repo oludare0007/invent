@@ -1,0 +1,50 @@
+{%extends 'admin/admin_layout.html'%}
+
+{% block content%}
+<br><br><br><br>
+<div class="col-md-12" id="bground2" style="margin-left: 150px;" >
+    <form class="px-4 py-3" action="{{url_for('changepass',id=user.user_id)}}" method="post" style="max-width: 600px;">
+        {% set m = get_flashed_messages(with_categories=True) %} 
+        {% if m: %}
+        {% for cat,msg in m %}
+           {% if cat =="error" %}
+            <div class="alert alert-danger">{{ msg }}</div>
+           {% else %}
+           <div class="alert alert-info">{{ msg }}</div>
+           {% endif %}
+        {% endfor %}
+        {% endif %}
+
+                <div class="form-floating mb-3">
+                    
+                    <h4 style="text-align: center;">Change Password</h4><br>
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">  
+      
+                </div>
+                    
+                    <div class="form-floating mb-3">
+                            <input class="form-control" id="pwd" type="password" placeholder="Input Old Password" name="oldpass" />
+                           
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="pwd" type="password" placeholder="New Password" name="newpass" />
+                           
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="pwd" type="password" placeholder="Confirm Password" name="confirmpass" />
+                           
+                        </div>
+                        
+                    <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+                        
+                        <button class="btn btn-primary col-12" type="submit">Change</button>
+                    </div>
+            
+        
+    </form>
+</div>
+
+
+{%endblock%}

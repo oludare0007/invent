@@ -1,0 +1,41 @@
+{%extends 'admin/admin_layout.html'%}
+
+
+{% block content%}
+
+
+
+<div class="col-md-4 text-center" style="margin-left: 300px;">
+    <h1 class="mt-4" style="text-align: center">EDIT COMMENT</h1>
+    <form class="px-4 py-3" action=" " method="post">
+        
+      
+           <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+
+            {% set m = get_flashed_messages(with_categories=True) %}
+            {% if m: %}
+            {% for cat,msg in m %}
+            {% if cat =="error" %}
+            <div class="alert alert-danger">{{ msg }}</div>
+            {% else %}
+            <div class="alert alert-info">{{ msg }}</div>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+
+
+            <div class="form-group">
+                {{ editcomment.csrf_token() }}
+                
+                
+                {{editcomment.comment(class_='form-control',value=record.comment if m is none else '')}}
+         
+                 
+              </div>
+
+              <button type="submit" class="btn btn-success">Edit</button>
+                </form>
+   
+</div>
+{%endblock%}

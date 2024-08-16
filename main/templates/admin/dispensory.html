@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title> Admin  Area</title>
+        <link href="../../static/css/styles.css" rel="stylesheet" />
+        <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+        <link rel="icon" type="image/x-icon" href="../../static/assets/img/favicon.png" />
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.24.1/feather.min.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
+    <style>
+    #layoutSidenav_content{
+        width:1200px
+    }
+   </style>
+    </head>
+    
+    
+    <!---Body-->
+    <body class="nav-fixed">
+        <nav class="topnav navbar navbar-expand shadow navbar-light bg-white" id="sidenavAccordion">
+            <a class="navbar-brand d-none d-sm-block" href="{{url_for('admin_dashboard')}}">Admin </a><button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 mr-lg-2" id="sidebarToggle" href="#"><i data-feather="menu"></i></button>
+            
+        </nav>
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav class="sidenav shadow-right sidenav-light">
+                    <div class="sidenav-menu">
+                        <div class="nav accordion" id="accordionSidenav">
+                            <div class="sidenav-menu-heading">Amidn Kit</div>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i data-feather="activity"></i> Library
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: rgb(45, 187, 45);">
+                                    <a class="dropdown-item" href="{{url_for('supplier')}}">All Suppliers</a>
+                                    <a class="dropdown-item" href="{{url_for('store')}}">All Stores</a>
+                                    <a class="dropdown-item" href="{{url_for('create_category')}}">All Categories</a>
+                                    <a class="dropdown-item" href="{{url_for('totalstock')}}">All stocks</a>
+                                    <a class="dropdown-item" href="{{url_for('stockupdate')}}">All Stock Update</a>
+                                    <a class="dropdown-item" href="{{url_for('dispense_conf')}}">All Dispensed products</a>
+                                    <a class="dropdown-item" href="{{url_for('dispensed_update')}}">All Dispensed update</a>
+                                </div>
+                                
+                            </li>
+                            
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i data-feather="activity"></i> Bank
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: rgb(45, 187, 45);">
+                                    <a class="dropdown-item" href="{{url_for('account')}}">Account</a>
+                                    <a class="dropdown-item" href="{{url_for('product_records')}}">Product Records</a>
+                                    <a class="dropdown-item" href="{{url_for('all_sales')}}">All Sales Record</a>
+                                    
+                                </div>
+                            </li>
+                            
+                            <a class="nav-link " href="{{url_for('admin_logout')}}" data-target="#collapseDashboards" aria-expanded="false"
+                                ><div class="nav-link-icon"><i data-feather="activity"></i></div>
+                                Logout
+                        </div>
+                    </div>
+                
+                </nav>
+            </div>
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="page-header pb-10 page-header-dark bg-gradient-primary-to-secondary">
+                        <div class="container-fluid">
+                            <div class="page-header-content">
+                                <h1 class="page-header-title">
+                                    <div class="page-header-icon"><i data-feather="activity"></i></div>
+                                    <a href="{{url_for('admin_dashboard')}}"><h3 style="color: black;"> Go Back To Dashboard</h3></a>
+                                </h1>
+                              
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="container-fluid mt-n10">
+                        
+                        
+                        <div class="row">
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-success text-white mb-4">
+                                    <a href=""><div class="card-body"><h6 style="text-align: center;">Create User</h6></div></a>
+                                   
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-warning text-white mb-4">
+                                    <a href="{{url_for('store')}}"> <div class="card-body"><h6 style="text-align: center;">Create Store</h6></div></a>
+                                  
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-success text-white">
+                                    <a href="{{url_for('supplier')}}"> <div class="card-body"><h6 style="text-align: center;">Create Supplier</h6></div></a>
+                                
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-warning text-white mb-4">
+                                    <a href="{{url_for('warehouse')}}">  <div class="card-body"><h6 style="text-align: center;">Input invetory</h6></div></a>
+                                    
+                                </div>
+                            </div>
+                        </div><br><br>
+                        <div class="card mb-4">
+                            <div class="card-header"></div>
+                            <div class="card-body">
+                                <div class="card-header" style="color: brown;">input  Stock</div>
+                                <div class="card-body">
+                                    <form class="px-4 py-3" action="{{url_for('dispense',id=product_id)}}" method="post" >
+                                        {% set m = get_flashed_messages(with_categories=True) %} 
+                                            {% if m: %}
+                                            {% for cat,msg in m %}
+                                               {% if cat =="error" %}
+                                                <div class="alert alert-danger">{{ msg }}</div>
+                                               {% else %}
+                                               <div class="alert alert-info">{{ msg }}</div>
+                                               {% endif %}
+                                            {% endfor %}
+                                            {% endif %}
+                                
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"> <br> 
+                                    
+                                        <input class="form-control" id="username" type="text" name="productname" value="{{selected_product.product_name}}" readonly/>
+                                    </div>
+                                      <br><br>
+                                    <div class="col-md-4">
+                            
+                                       
+                                                Available Quantity: {{selected_product.product_qty}}
+                                    
+                                        <input class="form-control" id="username" type="text" placeholder="Product quantity" name="productqty" />
+
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        
+                                           <br> <select class="form-control" id="session" name="store" placeholder="Select supplier">
+                                                <option value="">Select Store</option>
+                                                {% if allstore%}
+                                                {% for store in allstore%}
+                                                
+                                                <option value="{{store.store_name}}">{{store.store_name}}</option>
+                                                {% else %}
+                                                <p>No matching supplier found.</p>
+                                                {% endfor %}
+                                                {% endif %}
+                                            </select>
+                                        
+                                            
+                                    </div>
+                                    
+                                </div><br><br>
+
+                                     <div class="row">
+                                            <div class="col-md-4">     
+                                                Selling Price                     
+                                                <input class="form-control" id="username" type="text" placeholder="Selling Price" name="sellingprice" value="{{selected_product.selling_price}}"  readonly/>
+                                            </div><br><br><br>
+
+                                            <div class="col-md-4"><br>
+                                                <input class="form-control" id="username" type="text" placeholder="comment" name="category" value="{{selected_product.product_category}}"  readonly/>
+                                            </div>
+
+                                            <div class="col-md-4"><br>
+                                                <input class="form-control" id="comment" type="text" placeholder="Set product Limit" name="productlimit" />
+                                            </div>
+    
+                                            <div class="col-md-4"><br><br>
+                                                <input class="form-control" id="comment" type="text" placeholder="comment" name="comment" />
+                                            </div>
+
+                                            <div class="col-md-4"><br><br>
+                                                <input class="form-control" id="totqty" type="text" placeholder="Total Quantity Dispensed" name="totqty" />
+                                            </div>
+
+                                         
+                                    </div><br>
+
+                                        <button class="btn btn-primary col-12" href="index.html">Dispense</button>
+                                    </form>
+                                    <a href="{{url_for('admin_dashboard')}}"><p>Go back to Dashboard</p></a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <footer class="footer mt-auto footer-light">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6 small">Copyright &copy; dre.tech 2023</div>
+                         
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        
+        <script src="../../static/js/scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="../../static/assets/demo/chart-area-demo.js"></script>
+        <script src="../../static/assets/demo/chart-bar-demo.js"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+        <script src="/static/assets/demo/datatables-demo.js"></script>
+    </body>
+</html>
